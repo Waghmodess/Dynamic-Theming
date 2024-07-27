@@ -1,1 +1,69 @@
-<p>home works!</p>
+<div class="container-fluid">
+    <h3 class="mb-4">Employee Information Form</h3>
+    <form class="employeeForm" [formGroup]="employeeForm">
+        <div class="mb-3">
+            <label for="firstName" class="form-label">First Name</label>
+            <input type="text" class="form-control" formControlName="firstName" required>
+        </div>
+        <div class="mb-3">
+            <label for="lastName" class="form-label">Last Name</label>
+            <input type="text" class="form-control" formControlName="lastName" required>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" formControlName="email" required>
+        </div>
+        <div class="mb-3">
+            <label for="phone" class="form-label">Phone Number</label>
+            <input type="tel" class="form-control" formControlName="phone" pattern="^\d{10}$" required>
+        </div>
+        <div class="mb-3">
+            <label for="address" class="form-label">Address</label>
+            <textarea class="form-control" rows="3" formControlName="address" required></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="position" class="form-label">Position</label>
+            <select class="form-select" formControlName="position" required>
+                <option value="">Select Position</option>
+                <option value="Manager">Manager</option>
+                <option value="Developer">Developer</option>
+                <option value="Designer">Designer</option>
+                <option value="HR">HR</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="doj" class="form-label">Date of Joining</label>
+            <input type="date" class="form-control" formControlName="doj" required>
+        </div>
+        <div class="submit-reset-btn">
+            <button class="btn btn-primary" (click)="onSubmit()">Submit</button>
+            <button class="btn btn-warning" (click)="resetForm()">Reset</button>
+        </div>
+    </form>
+</div>
+<div class="container" *ngIf="data.length > 0">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Address</th>
+                <th scope="col">Position</th>
+                <th scope="col">Date Of Joining</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let dt of data">
+                <td>{{dt.firstName}}</td>
+                <td>{{dt.lastName}}</td>
+                <td>{{dt.email}}</td>
+                <td>{{dt.phone}}</td>
+                <td>{{dt.address}}</td>
+                <td>{{dt.position}}</td>
+                <td>{{dt.doj}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
